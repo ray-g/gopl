@@ -1,4 +1,4 @@
-# Exercise 1.3
+# Exercise 1.3 (P8)
 
 Experiment to measure the difference in running time between our potentially
 inefficient versions and the one last uses `strings.Join`.
