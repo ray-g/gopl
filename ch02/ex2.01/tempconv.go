@@ -22,6 +22,6 @@ const (
 	DeltaKC       Kelvin  = 273.15
 )
 
-func (c Celsius) String() string    { return fmt.Sprintf("%g°C", c) }
-func (f Fahrenheit) String() string { return fmt.Sprintf("%g°F", f) }
-func (k Kelvin) String() string     { return fmt.Sprintf("%g°K", k) }
+func (c Celsius) String() string    { return fmt.Sprintf("%.2f°C", c) }
+func (f Fahrenheit) String() string { return fmt.Sprintf("%.2f°F", f) }
+func (k Kelvin) String() string     { return fmt.Sprintf("%.2f°K", k) }

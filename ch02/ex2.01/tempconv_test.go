@@ -7,9 +7,9 @@ func TestCToF(t *testing.T) {
 		temp    Celsius
 		expects string
 	}{
-		{Celsius(0), "32°F"},
-		{Celsius(32), "89.6°F"},
-		{BoilingC, "212°F"},
+		{Celsius(0), "32.00°F"},
+		{Celsius(32), "89.60°F"},
+		{BoilingC, "212.00°F"},
 	}
 
 	for _, tc := range tcs {
@@ -25,9 +25,9 @@ func TestFToC(t *testing.T) {
 		temp    Fahrenheit
 		expects string
 	}{
-		{Fahrenheit(32), "0°C"},
-		{Fahrenheit(212), "100°C"},
-		{Fahrenheit(89.6), "32°C"},
+		{Fahrenheit(32), "0.00°C"},
+		{Fahrenheit(212), "100.00°C"},
+		{Fahrenheit(89.6), "32.00°C"},
 	}
 
 	for _, tc := range tcs {
@@ -61,9 +61,9 @@ func TestKToC(t *testing.T) {
 		temp    Kelvin
 		expects string
 	}{
-		{Kelvin(273.15), "0°C"},
-		{Kelvin(373.15), "100°C"},
-		{Kelvin(305.15), "32°C"},
+		{Kelvin(273.15), "0.00°C"},
+		{Kelvin(373.15), "100.00°C"},
+		{Kelvin(305.15), "32.00°C"},
 	}
 
 	for _, tc := range tcs {
@@ -97,9 +97,9 @@ func TestKToF(t *testing.T) {
 		temp    Kelvin
 		expects string
 	}{
-		{Kelvin(273.15), "32°F"},
-		{Kelvin(373.15), "212°F"},
-		{Kelvin(305.15), "89.6°F"},
+		{Kelvin(273.15), "32.00°F"},
+		{Kelvin(373.15), "212.00°F"},
+		{Kelvin(305.15), "89.60°F"},
 	}
 
 	for _, tc := range tcs {
