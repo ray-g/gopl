@@ -58,22 +58,8 @@ func newton(z complex128) color.Color {
 	for i := uint8(0); i < iterations; i++ {
 		z -= (z - 1/(z*z*z)) / 4
 		if cmplx.Abs(z*z*z*z-1) < 1e-6 {
-			//return color.Gray{255 - contrast*i}
-			return colorize(z, z, i)
+			return color.Gray{255 - contrast*i}
 		}
 	}
 	return color.Black
-}
-
-func colorize(v, z complex128, n uint8) color.Color {
-	const contrast = 15
-	blue := 255 - contrast*n
-	red := 255 - blue
-	green := lerp(red, blue, n%1)
-
-	return color.RGBA{red, green, blue, 255}
-}
-
-func lerp(v0, v1, t uint8) uint8 {
-	return v0 + t*(v1-v0)
 }
