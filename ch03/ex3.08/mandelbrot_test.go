@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestMain(t *testing.T) {
+func TestDraw(t *testing.T) {
 	stdout = new(bytes.Buffer)
 	main()
 	img := stdout.(*bytes.Buffer).String()
