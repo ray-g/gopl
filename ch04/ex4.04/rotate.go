@@ -8,7 +8,7 @@ func rotate(s []int, order int) {
 	tail := make([]int, order)
 	copy(tail, s[0:order])
 	copy(s, s[order:])
-	for i := 0; i < len(tail); i++ {
-		s[len(s)-order+i] = tail[i]
+	for i, n := range tail {
+		s[len(s)-order+i] = n
 	}
 }
