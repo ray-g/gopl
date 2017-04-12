@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+<title>The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+<link rel="search" type="application/opensearchdescription+xml" title="godoc" href="/opensearch.xml" />
+
+<link rel="stylesheet" href="/lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(["_setAccount", "UA-11222381-2"]);
+_gaq.push(["b._setAccount", "UA-49880327-6"]);
+window.trackPageview = function() {
+  _gaq.push(["_trackPageview", location.pathname+location.hash]);
+  _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+};
+window.trackPageview();
+window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+  _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+  _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+};
+</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/pkg/">Packages</a>
+
+<a id="playgroundButton" href="http://play.golang.org/" title="Show Go Playground">Play</a>
+
+<input type="text" id="search" name="q" class="inactive" value="Search" placeholder="Search">
+</div>
+</form>
+
+</div></div>
+
+
+<div id="page">
+<div class="container">
+
+
+
+
+
+<div id="nav"></div>
+
+
+
+
+<div class="left">
+
+
+
+<div style="clear: both;"></div>
+
+<script type="text/javascript">
+
+function readableTime(t) {
+	var m = ["January", "February", "March", "April", "May", "June", "July",
+		"August", "September", "October", "November", "December"];
+	var p = t.substring(0, t.indexOf("T")).split("-");
+	var d = new Date(p[0], p[1]-1, p[2]);
+	return d.getDate() + " " + m[d.getMonth()] + " " + d.getFullYear();
+}
+
+function feedLoaded(result) {
+	var blog = document.getElementById("blog");
+	var read = blog.getElementsByClassName("read")[0];
+	for (var i = 0; i < result.length && i < 2; i++) {
+		var entry = result[i];
+		var title = document.createElement("a");
+		title.className = "title";
+		title.href = entry.Link;
+		title.innerHTML = entry.Title;
+		blog.insertBefore(title, read);
+		var extract = document.createElement("div");
+		extract.className = "extract";
+		extract.innerHTML = entry.Summary;
+		blog.insertBefore(extract, read);
+		var when = document.createElement("div");
+		when.className = "when";
+		when.innerHTML = "Published " + readableTime(entry.Time);
+		blog.insertBefore(when, read);
+	}
+}
+
+window.initFuncs.push(function() {
+	// Set up playground if enabled.
+	if (window.playground) {
+		window.playground({
+			"codeEl":        "#learn .code",
+			"outputEl":      "#learn .output",
+			"runEl":         "#learn .run",
+			"shareEl":       "#learn .share",
+			"shareRedirect": "//play.golang.org/p/",
+			"toysEl":        "#learn .toys select"
+		});
+	} else {
+		$('#learn').hide()
+	}
+
+	// Load blog feed.
+	$('<script/>').attr('text', 'text/javascript')
+		.attr('src', '//blog.golang.org/.json?jsonp=feedLoaded')
+		.appendTo('body');
+
+	// Set the video at random.
+	var videos = [
+		{h: 241, s: "//www.youtube.com/embed/ytEkHepK08c"}, // Tour of Go
+		{h: 241, s: "//www.youtube.com/embed/f6kdp27TYZs"}, // Concurrency Patterns
+		{h: 233, s: "//player.vimeo.com/video/69237265"}    // Simple environment
+	];
+	var v = videos[Math.floor(Math.random()*videos.length)];
+	$('#video iframe').attr('height', v.h).attr('src', v.s);
+});
+
+</script>
+
+
+<div id="footer">
+Build version go1.8.1.<br>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="/lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script type="text/javascript" src="/lib/godoc/playground.js"></script>
+
+<script>var goVersion = "go1.8.1";</script>
+<script type="text/javascript" src="/lib/godoc/godocs.js"></script>
+
+<script type="text/javascript">
+(function() {
+  var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+  ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+  var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body>
+</html>
+
