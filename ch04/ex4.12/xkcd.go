@@ -105,13 +105,15 @@ func index(filename string) error {
 		return err
 	}
 
-	go indexComicsDealer(comicChan, filename)
+	go func() {
+		for i := 0; i < nworkers; i++ {
+			<-done
+		}
+		close(done)
+		close(comicChan)
+	}()
 
-	for i := 0; i < nworkers; i++ {
-		<-done
-	}
-	close(done)
-	close(comicChan)
+	indexComicsDealer(comicChan, filename)
 
 	return nil
 }
@@ -144,7 +146,7 @@ func indexComicsDealer(comicChan chan Comic, filename string) {
 	}
 	defer file.Close()
 	enc := gob.NewEncoder(file)
-	fmt.Println(wordIndex)
+	// fmt.Println(wordIndex)
 	err = enc.Encode(wordIndex)
 	if err != nil {
 		log.Fatal(err)
@@ -163,6 +165,7 @@ func indexComics(comics chan Comic) (WordIndex, NumIndex) {
 	for comic := range comics {
 		numIndex[comic.Num] = comic
 		scanner := bufio.NewScanner(strings.NewReader(comic.Transcript))
+		fmt.Printf("Dealing with comic %d\n", comic.Num)
 		scanner.Split(ScanWords)
 		for scanner.Scan() {
 			token := strings.ToLower(scanner.Text())
@@ -171,13 +174,15 @@ func indexComics(comics chan Comic) (WordIndex, NumIndex) {
 			}
 			wordIndex[token][comic.Num] = true
 		}
+		// fmt.Printf("Done with comic %d\n", comic.Num)
 	}
+	// fmt.Println("Done with all comic")
 	return wordIndex, numIndex
 }
 
 func fetcher(comicNums chan int, comics chan Comic, done chan int) {
 	for n := range comicNums {
-		fmt.Println("Getting", n)
+		// fmt.Println("Getting", n)
 		comic, err := getComic(n)
 		if err != nil {
 			log.Printf("Can't get comic %d: %s", n, err)
@@ -192,7 +197,7 @@ func fetcher(comicNums chan int, comics chan Comic, done chan int) {
 func dispatcher(comicNums chan int, max int) {
 	for i := 1; i <= max; i++ {
 		comicNums <- i
-		fmt.Println("added", i)
+		// fmt.Println("added", i)
 	}
 	close(comicNums)
 	fmt.Println("closed nums")
