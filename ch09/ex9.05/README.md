@@ -5,4 +5,6 @@ How many communications per second can the program sustain?
 
 ## Result
 
+```text
 2.1975286807808625e+06 rounds per second
+```
