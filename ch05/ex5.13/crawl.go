@@ -9,8 +9,6 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
-
-	"gopl.io/ch5/links"
 )
 
 //!+breadthFirst
@@ -51,7 +49,7 @@ func crawl(url, domain string) []string {
 	if err != nil {
 		log.Printf("Can't save URL \"%s\": %s", url, err)
 	}
-	list, err := links.Extract(url)
+	list, err := Extract(url)
 	if err != nil {
 		log.Print(err)
 	}
