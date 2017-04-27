@@ -1,3 +1,5 @@
+// Generage Exercises.md
+// run 'go run utils/combine.go -o Exercises.md' under root
 package main
 
 import (
